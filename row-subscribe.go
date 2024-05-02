@@ -8,25 +8,25 @@ import (
 // アカウントの購読状況を管理するために使用されます
 type Subscribe struct {
 	// ID is AccountID
-	ID string `json:"id,omitempty"`
+	ID string `firestore:"id,omitempty" json:"id,omitempty"`
 	// Plan is SubscribedPlan
-	Plan SubscribedPlan `json:"plan,omitempty"`
+	Plan SubscribedPlan `firestore:"plan,omitempty" json:"plan,omitempty"`
 
-	ManagedGUI Managed `json:"managed_gui,omitempty"`
-	ManagedAPI Managed `json:"managed_api,omitempty"`
+	ManagedGUI Managed `firestore:"managed_gui,omitempty" json:"managed_gui,omitempty"`
+	ManagedAPI Managed `firestore:"managed_api,omitempty" json:"managed_api,omitempty"`
 }
 
 type Managed struct {
-	Limit Count `json:"limit,omitempty"`
-	Used  Count `json:"used,omitempty"`
+	Limit Count `firestore:"limit,omitempty" json:"limit,omitempty"`
+	Used  Count `firestore:"used,omitempty" json:"used,omitempty"`
 
-	LastUsedAt time.Time `json:"last_used_at,omitempty"`
+	LastUsedAt time.Time `firestore:"last_used_at,omitempty" json:"last_used_at,omitempty"`
 }
 
 type Count struct {
-	Monthly uint16 `json:"monthly,omitempty"`
-	Daily   uint16 `json:"daily,omitempty"`
-	Hourly  uint16 `json:"hourly,omitempty"`
+	Monthly uint16 `firestore:"monthly,omitempty" json:"monthly,omitempty"`
+	Daily   uint16 `firestore:"daily,omitempty" json:"daily,omitempty"`
+	Hourly  uint16 `firestore:"hourly,omitempty" json:"hourly,omitempty"`
 }
 
 // NewSubscribe is constructor
