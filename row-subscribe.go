@@ -86,9 +86,9 @@ func (s *Subscribe) Set(level SubscribedPlan) *Subscribe {
 		s.ManagedAPI.Limit.Hourly = 100
 
 	case SubscribedPro:
-		s.ManagedAPI.Limit.Monthly = 1000
-		s.ManagedAPI.Limit.Daily = 100
-		s.ManagedAPI.Limit.Hourly = 10
+		s.ManagedGUI.Limit.Monthly = 1000
+		s.ManagedGUI.Limit.Daily = 100
+		s.ManagedGUI.Limit.Hourly = 10
 
 		s.ManagedAPI.Limit.Monthly = 10000
 		s.ManagedAPI.Limit.Daily = 1000
