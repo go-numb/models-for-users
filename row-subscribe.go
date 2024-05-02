@@ -8,25 +8,25 @@ import (
 // アカウントの購読状況を管理するために使用されます
 type Subscribe struct {
 	// ID is AccountID
-	ID string
+	ID string `json:"id,omitempty"`
 	// Plan is SubscribedPlan
-	Plan SubscribedPlan
+	Plan SubscribedPlan `json:"plan,omitempty"`
 
-	ManagedGUI Managed
-	ManagedAPI Managed
+	ManagedGUI Managed `json:"managed_gui,omitempty"`
+	ManagedAPI Managed `json:"managed_api,omitempty"`
 }
 
 type Managed struct {
-	Limit Count
-	Used  Count
+	Limit Count `json:"limit,omitempty"`
+	Used  Count `json:"used,omitempty"`
 
-	LastUsedAt time.Time
+	LastUsedAt time.Time `json:"last_used_at,omitempty"`
 }
 
 type Count struct {
-	Monthly uint16
-	Daily   uint16
-	Hourly  uint16
+	Monthly uint16 `json:"monthly,omitempty"`
+	Daily   uint16 `json:"daily,omitempty"`
+	Hourly  uint16 `json:"hourly,omitempty"`
 }
 
 // NewSubscribe is constructor
