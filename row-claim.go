@@ -10,7 +10,10 @@ type Claims struct {
 	RequestToken       string `firestore:"request_token" json:"request_token,omitempty"`
 	RequestTokenSecret string `firestore:"request_token_secret" json:"request_token_secret,omitempty"`
 
-	SpreadsheetID string `firestore:"spreadsheet_id" json:"spreadsheet_id,omitempty"`
+	// Referer URL
+	Ref string `firestore:"ref" json:"ref,omitempty"`
+	// User Class 識別子
+	Classification string `firestore:"classification" json:"classification,omitempty"`
 }
 
 // GetID for interface
