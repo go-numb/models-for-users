@@ -1,6 +1,7 @@
 package models
 
 import (
+	"strings"
 	"time"
 
 	"github.com/google/uuid"
@@ -19,6 +20,7 @@ type Account struct {
 	UUID         string `csv:"uuid" dataframe:"uuid" firestore:"uuid,omitempty" json:"uuid,omitempty"`
 	ID           string `csv:"id" dataframe:"id" firestore:"id,omitempty" json:"id,omitempty"`
 	Password     string `csv:"password" dataframe:"password" firestore:"password,omitempty" json:"password,omitempty"`
+	Tel          string `csv:"tel" dataframe:"tel" firestore:"tel,omitempty" json:"tel,omitempty"`
 	SpreadID     string `csv:"spread_id" dataframe:"spread_id" firestore:"spread_id,omitempty" json:"spread_id,omitempty"`
 	AccessToken  string `csv:"access_token" dataframe:"access_token" firestore:"access_token,omitempty" json:"access_token,omitempty"`
 	AccessSecret string `csv:"access_secret" dataframe:"access_secret" firestore:"access_secret,omitempty" json:"access_secret,omitempty"`
@@ -43,4 +45,13 @@ func NewAccount(id, sheetID, accessToken, accessSecret string) *Account {
 // GetID for interface
 func (p Account) GetID() string {
 	return p.ID
+}
+
+// CleanTelphoneNumber 090-1234-5678 -> 09012345678
+func (p Account) CleanTelphoneNumber() string {
+	// 090-1234-5678 -> 09012345678
+	s := strings.TrimSpace(p.Tel)
+	s = strings.ReplaceAll(s, "-", "")
+	s = strings.ReplaceAll(s, "―", "")
+	return strings.ReplaceAll(s, "ー", "")
 }
